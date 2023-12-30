@@ -13,17 +13,23 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     
+    - name: Generate Date Variable
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d')"
+
     - name: Get From XBMC Repo
       run: |
         wget -O source/addon.xml https://raw.githubusercontent.com/xbmc/xbmc/master/addons/repository.xbmc.org/addon.xml
-        version=$(grep -oP '(\d+\.\d+\.\d+)' source/addon.xml | head -n 1 )
-        sed -i 's/mirrors\.kodi\.tv/mirrors.tuna.tsinghua.edu.cn\/kodi/g' source/addon.xml
-        sed -i -E  '0,/version="([0-9]+\.[0-9]+\.)([0-9]+)"/s//version=\"\1\21\"/' source/addon.xml                    
-      
-    - name: Read Version from File
+        
+    - name: Read Version
       id: version
       run: echo "::set-output name=version::$(grep -oP '(\d+\.\d+\.\d+)' source/addon.xml | head -n 1 )"
 
+    - name: Merage
+      run: |
+        sed -i 's/mirrors\.kodi\.tv/mirrors.tuna.tsinghua.edu.cn\/kodi/g' source/addon.xml
+        sed -i -E  '0,/version="([0-9]+\.[0-9]+\.)([0-9]+)"/s//version=\"\1\21\"/' source/addon.xml                    
+    
     - name: Commit and Push
       run: |
         git config --global user.name "Action"
@@ -43,7 +49,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v${{ steps.version.outputs.version }}
-        release_name: Release ${{ steps.version.outputs.version }}
+        release_name: Release ${{ steps.date.outputs.date }}-${{ steps.version.outputs.version }}
         body: |
           push自动发布
 
