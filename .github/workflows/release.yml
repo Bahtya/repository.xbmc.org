@@ -13,6 +13,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+
     - name: Archive Folder
       run: |
         zip -r repository.xbmc.org.zip source
@@ -26,8 +27,7 @@ jobs:
         tag_name: v${{ github.run_number }}
         release_name: Release ${{ github.run_number }}
         body: |
-          Changes in this release:
-          - Describe your changes here
+          push自动发布
 
     - name: Upload Release Asset
       id: upload-release-asset
