@@ -16,8 +16,7 @@
             "src": "/release/repo",
             "headers": [
                 {
-                    "key": "Content-Disposition",
-                    "value": "attachment"
+                    "Content-Disposition": "attachment"
                 }
             ],
             "dest": "/release/repository.xbmc.org.zip"
