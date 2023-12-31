@@ -26,6 +26,14 @@ jobs:
         zip -r ../release/chinese.metadata.tvshows.themoviedb.org.zip chinese.metadata.tvshows.themoviedb.org
         cd ../
 
+    - name: Commit and Push
+      run: |
+        git config --global user.name "Action"
+        git config --global user.email "Action@github.com"
+        git add .
+        git commit -m "Automated commit by GitHub Actions"
+        git push
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
