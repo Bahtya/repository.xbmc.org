@@ -23,7 +23,7 @@ jobs:
         
     - name: Read Version
       id: version
-      run: echo "::set-output name=version::$(grep -oP '(\d+\.\d+\.\d+)' source/addon.xml | head -n 1 )"
+      run: echo "::set-output name=version::$(grep -oP '(\d+\.\d+\.\d+)' source/repository.xbmc.org/addon.xml | head -n 1 )"
 
     - name: Merage And Archive
       run: |
