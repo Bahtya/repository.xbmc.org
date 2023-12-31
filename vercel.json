@@ -11,6 +11,14 @@
         {
             "src": "/release/repo",
             "dest": "/release/repository.xbmc.org.zip"
+        },
+        {
+            "src": "/release/tmdb",
+            "dest": "/release/chinese.metadata.themoviedb.org.zip"
+        },
+        {
+            "src": "/release/tvdb",
+            "dest": "/release/chinese.metadata.tvshows.themoviedb.org.zip"
         }
     ]
 }
