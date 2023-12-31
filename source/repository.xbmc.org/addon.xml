@@ -10,10 +10,10 @@
 		<!-- Do not forget to bump add-on version when changing paths to force a repo refresh -->
 		<dir>
 			<info>https://mirrors.tuna.tsinghua.edu.cn/kodi/addons/omega/addons.xml.gz</info>
-			<checksum verify="sha256">https://mirrors.tuna.tsinghua.edu.cn/kodi/addons/omega/addons.xml.gz?sha256</checksum>
+			<checksum>https://mirrors.tuna.tsinghua.edu.cn/kodi/addons/omega/addons.xml.gz</checksum>
 			<datadir>https://mirrors.tuna.tsinghua.edu.cn/kodi/addons/omega</datadir>
 			<artdir>https://mirrors.tuna.tsinghua.edu.cn/kodi/addons/omega</artdir>
-			<hashes>sha256</hashes>
+			<hashes>false</hashes>
 		</dir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
