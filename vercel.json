@@ -2,23 +2,14 @@
     "routes": [
         {
             "src": "/api/tmdb/(.*)",
-            "headers": {
-                "Location": "/api.themoviedb.org/$1"
-            }
+            "dest": "/api.themoviedb.org/$1"
         },
         {
             "src": "/repo",
-            "headers": {
-                "Location": "/B"
-            }
+            "dest": "/B"
         },
         {
             "src": "/release/repo",
-            "headers": [
-                {
-                    "Content-Disposition": "attachment"
-                }
-            ],
             "dest": "/release/repository.xbmc.org.zip"
         }
     ]
