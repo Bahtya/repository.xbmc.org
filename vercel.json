@@ -13,14 +13,14 @@
             }
         },
         {
-            "source": "/release/repo",
+            "src": "/release/repo",
             "headers": [
                 {
                     "key": "Content-Disposition",
                     "value": "attachment"
                 }
             ],
-            "destination": "/release/repository.xbmc.org.zip"
+            "dest": "/release/repository.xbmc.org.zip"
         }
     ]
 }
