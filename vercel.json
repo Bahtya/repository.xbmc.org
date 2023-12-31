@@ -5,8 +5,8 @@
             "dest": "index.html"
         },
         {
-            "src": "/apitmdb",
-            "dest": "https://api.themoviedb.org/"
+            "src": "/apitmdb{.*}",
+            "dest": "https://api.themoviedb.org{$1}"
         },
         {
             "src": "/repo",
