@@ -16,3 +16,6 @@ tmdb电影刮削
 ### chinese.metadata.tvshows.themoviedb.org.zip
 tmdb剧集刮削
 国内下载：[点击下载](https://kodiproxy.cc-cloud.top/release/tvdb)
+
+## 问题汇总：
+安装失败时重启kodi再次安装

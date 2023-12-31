@@ -1,6 +1,10 @@
 {
     "routes": [
         {
+            "src": "/",
+            "dest": "index.html"
+        },
+        {
             "src": "/apitmdb",
             "dest": "https://api.themoviedb.org/"
         },
