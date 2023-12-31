@@ -29,7 +29,10 @@ jobs:
       run: |
         sed -i 's/mirrors\.kodi\.tv/mirrors.tuna.tsinghua.edu.cn\/kodi/g' source/repository.xbmc.org/addon.xml
         sed -i -E  '0,/version="([0-9]+\.[0-9]+\.)([0-9]+)"/s//version=\"\1\21\"/' source/repository.xbmc.org/addon.xml                    
-        mkdir -p release && zip -r release/repository.xbmc.org.zip source/repository.xbmc.org
+        mkdir -p release
+        zip -r release/repository.xbmc.org.zip source/repository.xbmc.org
+        zip -r release/chinese.metadata.themoviedb.org.zip source/chinese.metadata.themoviedb.org
+        zip -r release/chinese.metadata.tvshows.themoviedb.org.zip source/chinese.metadata.tvshows.themoviedb.org
 
     - name: Commit and Push
       run: |
@@ -50,7 +53,7 @@ jobs:
         body: |
           push自动发布
 
-    - name: Upload Release Asset
+    - name: Upload Release Asset Repo
       id: upload-release-asset
       uses: actions/upload-release-asset@v1
       env:
@@ -59,4 +62,26 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./release/repository.xbmc.org.zip
         asset_name: repository.xbmc.org.zip
+        asset_content_type: application/zip
+
+    - name: Upload Release Asset Repo
+      id: upload-release-asset-2
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./release/chinese.metadata.themoviedb.org.zip
+        asset_name: chinese.metadata.themoviedb.org.zip
+        asset_content_type: application/zip
+
+    - name: Upload Release Asset Repo
+      id: upload-release-asset-3
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./release/chinese.metadata.tvshows.themoviedb.org.zip
+        asset_name: chinese.metadata.tvshows.themoviedb.org.zip
         asset_content_type: application/zip
