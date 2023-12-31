@@ -29,7 +29,8 @@ jobs:
       run: |
         sed -i 's/mirrors\.kodi\.tv/mirrors.tuna.tsinghua.edu.cn\/kodi/g' source/addon.xml
         sed -i -E  '0,/version="([0-9]+\.[0-9]+\.)([0-9]+)"/s//version=\"\1\21\"/' source/addon.xml                    
-    
+        zip -r release/repository.xbmc.org.zip source/repository.xbmc.org
+
     - name: Commit and Push
       run: |
         git config --global user.name "Action"
@@ -37,10 +38,6 @@ jobs:
         git add .
         git commit -m "Automated commit by GitHub Actions"
         git push
-
-    - name: Archive Folder
-      run: |
-        zip -r repository.xbmc.org.zip source
 
     - name: Create Release
       id: create_release
@@ -60,6 +57,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./repository.xbmc.org.zip
+        asset_path: ./release/repository.xbmc.org.zip
         asset_name: repository.xbmc.org.zip
         asset_content_type: application/zip
