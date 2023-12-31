@@ -15,34 +15,16 @@ jobs:
     
     - name: Generate Date Variable
       id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d')"
-
-    - name: Get From XBMC Repo
-      run: |
-        wget -O source/repository.xbmc.org/addon.xml https://raw.githubusercontent.com/xbmc/xbmc/master/addons/repository.xbmc.org/addon.xml
-        
-    - name: Read Version
-      id: version
-      run: echo "::set-output name=version::$(grep -oP '(\d+\.\d+\.\d+)' source/repository.xbmc.org/addon.xml | head -n 1 )"
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
     - name: Merage And Archive
       run: |
-        sed -i 's/mirrors\.kodi\.tv/mirrors.tuna.tsinghua.edu.cn\/kodi/g' source/repository.xbmc.org/addon.xml
-        sed -i -E  '0,/version="([0-9]+\.[0-9]+\.)([0-9]+)"/s//version=\"\1\21\"/' source/repository.xbmc.org/addon.xml                    
         mkdir -p release && rm -rf release/*
         cd source
         zip -r ../release/repository.xbmc.org.zip repository.xbmc.org
         zip -r ../release/chinese.metadata.themoviedb.org.zip chinese.metadata.themoviedb.org
         zip -r ../release/chinese.metadata.tvshows.themoviedb.org.zip chinese.metadata.tvshows.themoviedb.org
         cd ../
-        
-    - name: Commit and Push
-      run: |
-        git config --global user.name "Action"
-        git config --global user.email "Action@github.com"
-        git add .
-        git commit -m "Automated commit by GitHub Actions"
-        git push
 
     - name: Create Release
       id: create_release
@@ -50,8 +32,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.version.outputs.version }}
-        release_name: Release ${{ steps.date.outputs.date }}-${{ steps.version.outputs.version }}
+        tag_name: v3.4.1
+        release_name: Release ${{ steps.date.outputs.date }}-v3.4.1
         body: |
           push自动发布
 
