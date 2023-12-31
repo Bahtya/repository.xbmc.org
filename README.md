@@ -10,9 +10,9 @@
 在Release获取或Vercel国内地址
 ### repository.xbmc.org.zip 
  国内下载：[点击下载](https://kodiproxy.cc-cloud.top/release/repo)
-### chinese.metadata.tvshows.themoviedb.org.zip 
+### chinese.metadata.themoviedb.org.zip 
 tmdb电影刮削
 国内下载：[点击下载](https://kodiproxy.cc-cloud.top/release/tmdb)
-### chinese.metadata.themoviedb.org.zip
+### chinese.metadata.tvshows.themoviedb.org.zip
 tmdb剧集刮削
 国内下载：[点击下载](https://kodiproxy.cc-cloud.top/release/tvdb)

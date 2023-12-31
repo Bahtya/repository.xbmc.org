@@ -29,11 +29,13 @@ jobs:
       run: |
         sed -i 's/mirrors\.kodi\.tv/mirrors.tuna.tsinghua.edu.cn\/kodi/g' source/repository.xbmc.org/addon.xml
         sed -i -E  '0,/version="([0-9]+\.[0-9]+\.)([0-9]+)"/s//version=\"\1\21\"/' source/repository.xbmc.org/addon.xml                    
-        mkdir -p release
-        zip -r release/repository.xbmc.org.zip source/repository.xbmc.org
-        zip -r release/chinese.metadata.themoviedb.org.zip source/chinese.metadata.themoviedb.org
-        zip -r release/chinese.metadata.tvshows.themoviedb.org.zip source/chinese.metadata.tvshows.themoviedb.org
-
+        mkdir -p release && rm -rf release/*
+        cd source
+        zip -r ../release/repository.xbmc.org.zip repository.xbmc.org
+        zip -r ../release/chinese.metadata.themoviedb.org.zip chinese.metadata.themoviedb.org
+        zip -r ../release/chinese.metadata.tvshows.themoviedb.org.zip chinese.metadata.tvshows.themoviedb.org
+        cd ../
+        
     - name: Commit and Push
       run: |
         git config --global user.name "Action"
