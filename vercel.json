@@ -27,6 +27,6 @@
         {"src":"/mikan","dest":"https://mikanani.me"},
         {"src":"/js","dest":"https://mikanani.me/js"},
         {"src":"/image","dest":"https://mikanani.me/image"},
-        {"src":"/css","dest":"https://mikanani.me/css"},
+        {"src":"/css","dest":"https://mikanani.me/css"}
     ]
 }
