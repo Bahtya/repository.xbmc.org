@@ -23,10 +23,6 @@
         {
             "src": "/release/tvdb",
             "dest": "/release/chinese.metadata.tvshows.themoviedb.org.zip"
-        },
-        {"src":"/mikan","dest":"https://mikanani.me"},
-        {"src":"/js","dest":"https://mikanani.me/js"},
-        {"src":"/image","dest":"https://mikanani.me/image"},
-        {"src":"/css","dest":"https://mikanani.me/css"}
+        }
     ]
 }
