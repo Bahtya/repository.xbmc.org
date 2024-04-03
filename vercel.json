@@ -24,6 +24,6 @@
             "src": "/release/tvdb",
             "dest": "/release/chinese.metadata.tvshows.themoviedb.org.zip"
         },
-        {"src":"/mikan","dest":"https://mikanani.me/"}
+        {"src":"/mikan","dest":"https://mikanani.me"}
     ]
 }
